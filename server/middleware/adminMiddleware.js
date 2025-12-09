@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
-const User = require('../models/UserModel'); // Import User Model to fetch details
+const User = require('../models/UserModel');
 
 // Middleware to check if the user is authenticated and is an admin
 const protectAdmin = asyncHandler(async (req, res, next) => {

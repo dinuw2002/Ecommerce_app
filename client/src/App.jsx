@@ -18,8 +18,8 @@ import PaymentScreen from './components/PaymentScreen';
 import PlaceOrderScreen from './components/PlaceOrderScreen';
 
 // --- ADMIN SCREENS ---
-import AdminDashboardScreen from './components/AdminDashboardScreen'; // <--- Make sure this file exists!
-import AdminProductList from './components/AdminProductList';         // <--- Make sure this file exists!
+import AdminDashboardScreen from './components/AdminDashboardScreen';
+import AdminProductList from './components/AdminProductList';         
 import ProductEditScreen from './components/ProductEditScreen';
 import ProductCreateScreen from './components/ProductCreateScreen';
 
@@ -47,7 +47,6 @@ function App() {
                 <Route path="/placeorder" element={<PlaceOrderScreen />} />
 
                 {/* --- ADMIN ROUTES --- */}
-                {/* This fixes the "No Route" error you were seeing */}
                 <Route path="/admin/dashboard" element={<AdminDashboardScreen />} />
                 <Route path="/admin/products" element={<AdminProductList />} />
                 <Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />

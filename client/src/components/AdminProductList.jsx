@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // <--- Check this import!
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from '../context/UserContext';
 
@@ -59,7 +59,7 @@ const AdminProductList = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                 <h1>Products</h1>
                 
-                {/* THIS WAS LIKELY THE ISSUE - Ensure Link is imported above */}
+                
                 <Link to="/admin/product/create">
                     <button 
                         style={{ padding: '10px 20px', backgroundColor: '#28a745', color: 'white', border: 'none', cursor: 'pointer' }}

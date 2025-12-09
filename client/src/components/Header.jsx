@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
-import { CartContext } from '../context/CartContext'; // Added to show cart count
-import SearchBox from './SearchBox'; // <-- NEW IMPORT
+import { CartContext } from '../context/CartContext';
+import SearchBox from './SearchBox';
 
 const Header = () => {
     const { user, logout } = useContext(UserContext); 

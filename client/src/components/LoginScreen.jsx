@@ -13,7 +13,7 @@ const LoginScreen = () => {
     const navigate = useNavigate();
     const { search } = useLocation();
     
-    // Check if there is a redirect URL (e.g. ?redirect=/shipping)
+    
     const redirectInUrl = new URLSearchParams(search).get('redirect');
     const redirect = redirectInUrl ? redirectInUrl : '/';
 
