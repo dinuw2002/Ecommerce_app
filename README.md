@@ -59,7 +59,7 @@ A fully functional e-commerce platform built from scratch using the MERN stack (
 ![Home Page](screenshots/homepage.JPG)
 
 ### Product Details
-![Product Detail](screenshots/product-detail.png)
+![Product Detail](screenshots/productdetail.png)
 
 ### Search Bar
 ![Search Bar](screenshots/searchBar.JPG)
@@ -74,7 +74,7 @@ A fully functional e-commerce platform built from scratch using the MERN stack (
 ![Edit Product](screenshots/editproduct.JPG)
 
 ### Create Product
-![Create Product](screenshots/createproduct.JPG)
+![Create Product](screenshots/createProduct.JPG)
 
 ### Admin Dashboard
 ![Admin Dashboard](screenshots/admindashboard.JPG)
