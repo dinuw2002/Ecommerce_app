@@ -4,11 +4,10 @@ import axios from 'axios';
 import { UserContext } from '../context/UserContext';
 
 const ProductEditScreen = () => {
-    const { id } = useParams(); // Get product ID from URL
+    const { id } = useParams();
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
 
-    // Form State
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState('');
@@ -20,7 +19,6 @@ const ProductEditScreen = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        // Fetch the existing product details to pre-fill the form
         const fetchProduct = async () => {
             try {
                 const { data } = await axios.get(`http://localhost:5000/api/products/${id}`);
@@ -36,7 +34,6 @@ const ProductEditScreen = () => {
                 setLoading(false);
             }
         };
-
         fetchProduct();
     }, [id]);
 
@@ -46,94 +43,89 @@ const ProductEditScreen = () => {
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${user.token}`, // Admin Token
+                    Authorization: `Bearer ${user.token}`,
                 },
             };
 
-            // Send PUT request to update product
             await axios.put(
                 `http://localhost:5000/api/products/${id}`,
-                {
-                    name,
-                    price,
-                    imageUrl: image,
-                    category,
-                    countInStock,
-                    description,
-                },
+                { name, price, imageUrl: image, category, countInStock, description },
                 config
             );
 
             alert('Product Updated Successfully!');
-            navigate('/admin/products'); // Go back to the list
+            navigate('/admin/products');
         } catch (err) {
             alert('Update Failed');
         }
     };
 
-    if (loading) return <h2>Loading...</h2>;
-    if (error) return <h2>{error}</h2>;
+    if (loading) return <div className="text-center mt-10">Loading...</div>;
+    if (error) return <div className="text-center text-red-500 mt-10">{error}</div>;
 
     return (
-        <div style={{ maxWidth: '600px', margin: '20px auto', padding: '20px' }}>
-            <Link to="/admin/products" style={{ textDecoration: 'none', color: 'gray' }}>Go Back</Link>
+        <div className="container mx-auto px-4 py-8">
+            <Link to="/admin/products" className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center mb-6 transition duration-200">
+               <span className="mr-2">&larr;</span> Go Back
+            </Link>
             
-            <h1>Edit Product</h1>
-            
-            <form onSubmit={submitHandler}>
+            <div className="max-w-lg mx-auto bg-white rounded-lg shadow-lg p-8">
+                <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Edit Product</h1>
                 
-                {/* Name */}
-                <div style={{ marginBottom: '15px' }}>
-                    <label>Name</label>
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} 
-                        style={{ width: '100%', padding: '8px' }} required 
-                    />
-                </div>
+                <form onSubmit={submitHandler}>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">Name</label>
+                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required 
+                        />
+                    </div>
 
-                {/* Price */}
-                <div style={{ marginBottom: '15px' }}>
-                    <label>Price</label>
-                    <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} 
-                        style={{ width: '100%', padding: '8px' }} required 
-                    />
-                </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">Price</label>
+                        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required 
+                        />
+                    </div>
 
-                {/* Image URL */}
-                <div style={{ marginBottom: '15px' }}>
-                    <label>Image URL</label>
-                    <input type="text" value={image} onChange={(e) => setImage(e.target.value)} 
-                        style={{ width: '100%', padding: '8px' }} required 
-                    />
-                </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">Image URL</label>
+                        <input type="text" value={image} onChange={(e) => setImage(e.target.value)} 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required 
+                        />
+                    </div>
 
-                {/* Category */}
-                <div style={{ marginBottom: '15px' }}>
-                    <label>Category</label>
-                    <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} 
-                        style={{ width: '100%', padding: '8px' }} required 
-                    />
-                </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">Category</label>
+                        <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required 
+                        />
+                    </div>
 
-                {/* Count In Stock */}
-                <div style={{ marginBottom: '15px' }}>
-                    <label>Count In Stock</label>
-                    <input type="number" value={countInStock} onChange={(e) => setCountInStock(e.target.value)} 
-                        style={{ width: '100%', padding: '8px' }} required 
-                    />
-                </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 font-bold mb-2">Count In Stock</label>
+                        <input type="number" value={countInStock} onChange={(e) => setCountInStock(e.target.value)} 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required 
+                        />
+                    </div>
 
-                {/* Description */}
-                <div style={{ marginBottom: '15px' }}>
-                    <label>Description</label>
-                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} 
-                        style={{ width: '100%', padding: '8px', minHeight: '100px' }} required 
-                    ></textarea>
-                </div>
+                    <div className="mb-6">
+                        <label className="block text-gray-700 font-bold mb-2">Description</label>
+                        <textarea value={description} onChange={(e) => setDescription(e.target.value)} 
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 h-32"
+                            required 
+                        ></textarea>
+                    </div>
 
-                <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', cursor: 'pointer' }}>
-                    Update Product
-                </button>
-            </form>
+                    <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition duration-200">
+                        Update Product
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
