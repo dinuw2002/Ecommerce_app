@@ -24,7 +24,7 @@ A fully functional e-commerce platform built from scratch using the MERN stack (
 
 1. **Clone the repo**
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/mern-techshop.git](https://github.com/YOUR_USERNAME/mern-techshop.git)
+   git clone [https://github.com/dinuw2002/Ecommerce_app](https://github.com/dinuw2002/Ecommerce_app)
 
 2. **Install Dependencies**
     
